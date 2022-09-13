@@ -20,10 +20,18 @@ connection.once("open", () => {
   console.log("MongoDB Database Connection Successfull"); //Display in console if
 });
 
+
+const CustomerRouter = require("./routes/CustomerRoutes.js");
+app.use("/customer", CustomerRouter);
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port number : ${PORT}`); //Display in console if server is running
 });
 
-//yarn fix-format
 
-console.log("Hello world");
+
+
+
+
