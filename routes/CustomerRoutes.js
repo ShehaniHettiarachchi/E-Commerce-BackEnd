@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const { Customer } = require("./customer.model.js");
+const { Customer } = require("../models/CustomerModel");
 
 //Localhost:8070/customer/register
 
