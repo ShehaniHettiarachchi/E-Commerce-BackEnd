@@ -20,7 +20,6 @@ connection.once("open", () => {
     console.log("MongoDB Database Connection Successfull"); //Display in console if
 });
 
-
 const CustomerRouter = require("./routes/CustomerRoutes.js");
 app.use("/customer", CustomerRouter);
 
