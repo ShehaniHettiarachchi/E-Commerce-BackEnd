@@ -21,7 +21,10 @@ connection.once("open", () => {
 });
 
 const CustomerRouter = require("./routes/CustomerRoutes.js");
+const OrderRouter = require("./routes/OrderRoutes");//imort order route from routes
+
 app.use("/customer", CustomerRouter);
+app.use("/order", OrderRouter);//order route
 
 const CartRouter = require("./routes/CartRoutes.js");
 app.use("/cart", CartRouter);
