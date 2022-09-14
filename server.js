@@ -17,21 +17,21 @@ mongoose.connect(URL, {});
 
 const connection = mongoose.connection; //mongoDB connection
 connection.once("open", () => {
-  console.log("MongoDB Database Connection Successfull"); //Display in console if
+    console.log("MongoDB Database Connection Successfull"); //Display in console if
 });
-
 
 const CustomerRouter = require("./routes/CustomerRoutes.js");
 app.use("/customer", CustomerRouter);
 
+const CartRouter = require("./routes/CartRoutes.js");
+app.use("/cart", CartRouter);
 
+const WishlistRouter = require("./routes/WishlistRoutes.js");
+app.use("/wishlist", WishlistRouter);
+
+const ReviewRouter = require("./routes/ReviewRoutes.js");
+app.use("/review", ReviewRouter);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port number : ${PORT}`); //Display in console if server is running
+    console.log(`Server is running on port number : ${PORT}`); //Display in console if server is running
 });
-
-
-
-
-
-

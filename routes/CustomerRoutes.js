@@ -6,6 +6,7 @@ const { Customer } = require("../models/CustomerModel");
 //Localhost:8070/customer/register
 
 http: router.post("/register", (req, res) => {
+
   Customer.find({ email: req.body.email })
     .exec()
     .then((customer) => {
@@ -48,6 +49,7 @@ http: router.post("/register", (req, res) => {
 //localhost:8070/customer/
 
 http: router.route("/").get((req, res) => {
+
   Customer.find()
     .then((customer) => {
       res.json(customer);
@@ -58,6 +60,7 @@ http: router.route("/").get((req, res) => {
 });
 
 //localhost:8070/customer/delete/
+
 
 http: router.route("/delete/:id").delete(async (req, res) => {
   let userID = req.params.id;
@@ -76,6 +79,7 @@ http: router.route("/delete/:id").delete(async (req, res) => {
 });
 
 //localhost:8070/customer/get/
+
 
 router.route("/get/:id").get(async (req, res) => {
   let userID = req.params.id;
