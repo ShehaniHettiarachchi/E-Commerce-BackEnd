@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const wishlistSchema = newSchema({
+const wishlistSchema = new Schema({
     productName: {
         type: String,
         required: [true, "Please enter your product name"],
