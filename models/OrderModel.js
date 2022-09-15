@@ -43,7 +43,7 @@ const orderSchema = new Schema({
     ],
     customer: {
         type: String,
-                required: true,
+        required: true,
     },
 
     totalPrice: {
