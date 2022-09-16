@@ -122,7 +122,7 @@ http: router.post("/login", (req, res) => {
     });
 });
 
-//Localhost:8070/suppliers/logout ----> customer logout
+//Localhost:8070/customer/logout ----> customer logout
 
 http: router.get("/logout", CustomerAUth, (req, res) => {
   CustomerToken.findOneAndDelete(
