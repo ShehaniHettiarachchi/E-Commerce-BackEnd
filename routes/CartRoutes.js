@@ -77,7 +77,7 @@ http: router.route("/delete/:id").delete(async(req, res) => {
     await Cart.findByIdAndDelete(ID)
 
     .then(() => {
-            res.status(200).send({ status: "Cart Item syccessfully Deleted" });
+            res.status(200).send({ status: "Cart Item successfully Deleted" });
         })
         .catch((err) => {
             console.log(err.message);
