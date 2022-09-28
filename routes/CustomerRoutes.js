@@ -6,11 +6,9 @@ const { CustomerToken } = require("../models/CustomerToken");
 const { CustomerAUth } = require("../middlewares/CustomerAuth");
 const jwt = require("jsonwebtoken");
 
-
 //Localhost:8070/customer/register  ---> registration
 
 http: router.post("/register", (req, res) => {
-
   Customer.find({ email: req.body.email })
     .exec()
     .then((customer) => {
@@ -49,7 +47,6 @@ http: router.post("/register", (req, res) => {
       }
     });
 });
-
 
 //Localhost:8070/customer/login -----> customer login
 
@@ -145,7 +142,6 @@ http: router.get("/logout", CustomerAUth, (req, res) => {
 //localhost:8070/customer/  -----> retrieve
 
 http: router.route("/").get((req, res) => {
-
   Customer.find()
     .then((customer) => {
       res.json(customer);
@@ -156,7 +152,6 @@ http: router.route("/").get((req, res) => {
 });
 
 //localhost:8070/customer/delete/   -----> delete
-
 
 http: router.route("/delete/:id").delete(async (req, res) => {
   let userID = req.params.id;
@@ -174,8 +169,32 @@ http: router.route("/delete/:id").delete(async (req, res) => {
     });
 });
 
-//localhost:8070/customer/get/  -----> profile
+//localhost:8070/customer/update/  ------> update user role
 
+http: router.route("/update/:id").put(async (req, res) => {
+  let userID = req.params.id;
+  //destructure
+  const { name, email, permissionLevel } = req.body;
+
+  const updateCustomer = {
+    name,
+    email,
+    permissionLevel,
+  };
+
+  const update = await Customer.findByIdAndUpdate(userID, updateCustomer)
+    .then(() => {
+      res.status(200).send({ status: "Customer Details Updated" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res
+        .status(500)
+        .send({ status: "Error with updating data!", error: err.message });
+    });
+});
+
+//localhost:8070/customer/get/  -----> profile
 
 router.route("/get/:id").get(async (req, res) => {
   let userID = req.params.id;

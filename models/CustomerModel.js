@@ -24,7 +24,7 @@ const customerSchema = new Schema({
     required: true,
     enum: ["ADMIN", "USER"],
     default: "USER",
-  }
+  },
 });
 
 const Customer = mongoose.model("Customer", customerSchema);
