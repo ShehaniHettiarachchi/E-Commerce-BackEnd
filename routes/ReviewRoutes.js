@@ -99,7 +99,7 @@ htttp: router.route("/").get((req, res) => {
 router.route("/get/:id").get(async (req, res) => {
     let productId = req.params.productId;
 
-    await Review.findById(productId)
+    await Review.findOne(productId)
       .then((review) => {
         res.status(200).send({ status: "User fetched", review });
       })
