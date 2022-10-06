@@ -83,6 +83,7 @@ htttp: router.route("/").get((req, res) => {
 //-----get reviews from one product-----
 
 router.route("/get/:id").get(async (req, res) => {
+  
   let productId = req.params.productId;
 
   await Review.findById(productId)
