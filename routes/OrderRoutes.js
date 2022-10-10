@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { Customer } = require("../models/CustomerModel");
 const { Order } = require("../models/OrderModel");
 
 //Localhost:8070/order/newOrder
