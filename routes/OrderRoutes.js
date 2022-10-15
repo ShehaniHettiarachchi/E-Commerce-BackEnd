@@ -34,7 +34,7 @@ router.route("/newOrder").post((req, res) => {
 })
 
 // retrive all orders
-
+//Localhost:8070/order
 router.route("/").get((req, res) => {
     Order.find().then((Order) => {
         res.json(Order)
@@ -45,6 +45,7 @@ router.route("/").get((req, res) => {
 })
 
 //update order status
+//Localhost:8070/order/updateStatus/_id
 router.route("/updateStatus/:id").put(async (req, res) => {
     const orderId = req.params.id;
     const { orderStatus } = req.body;
@@ -64,6 +65,32 @@ router.route("/updateStatus/:id").put(async (req, res) => {
 
 })
 
+//delete order
+//Localhost:8070/order/delete/_id
+router.route("/delete/:id").delete(async (req, res) => {
+    const orderId = req.params.id;
+
+    await Order.findByIdAndDelete(orderId)
+        .then(() => {
+            res.status(200).send({ status: "Order Deleted Successfully" });
+        }).catch((err) => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with delete order", error: err.message });
+        })
+})
+
+//get single order
+//Localhost:8070/order/get/_id
+router.route("/get/:id").get(async (req, res) => {
+    let orderId = req.params.id;
+    await Order.findById(orderId).then(() => {
+        res.status(200).send({ status: "Order fethced",order: Order });
+    }).catch(() => {
+        console.log(err.message);
+        res.status(500).send({ status: "Error with fetching order", error: err.message });
+    })
+
+})
 
 
 

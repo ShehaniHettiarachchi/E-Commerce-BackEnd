@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
 
+    customer: {
+        type: String,
+        required: true,
+    },
     shippingInfo: {
         address: {
             type: String,
@@ -41,11 +45,7 @@ const orderSchema = new Schema({
             },
         },
     ],
-    customer: {
-        type: String,
-        required: true,
-    },
-
+    
     totalPrice: {
         type: Number,
         required: true,
