@@ -6,7 +6,8 @@ router.route("/newOrder").post((req, res) => {
   const {
     shippingInfo,
     orderItems,
-    customer,
+    customerID,
+    customerEmail,
     totalPrice,
     orderStatus,
     deliveredAt,
@@ -16,7 +17,8 @@ router.route("/newOrder").post((req, res) => {
   const newOrder = new Order({
     shippingInfo,
     orderItems,
-    customer,
+    customerID,
+    customerEmail,
     totalPrice,
     orderStatus,
     deliveredAt,

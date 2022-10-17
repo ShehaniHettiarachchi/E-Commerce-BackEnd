@@ -35,6 +35,9 @@ app.use("/wishlist", WishlistRouter);
 const ReviewRouter = require("./routes/ReviewRoutes.js");
 app.use("/review", ReviewRouter);
 
+const PurchaseRouter = require("./routes/PurchaseRoutes.js");
+app.use("/order", PurchaseRouter);
+
 app.listen(PORT, () => {
   console.log(`Server is running on port number : ${PORT}`); //Display in console if server is running
 });

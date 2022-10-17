@@ -40,7 +40,12 @@ const orderSchema = new Schema({
       },
     },
   ],
-  customer: {
+  customerID: {
+    type: String,
+    required: true,
+  },
+
+  customerEmail: {
     type: String,
     required: true,
   },
