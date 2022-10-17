@@ -2,21 +2,21 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
-  userId: {
+  UserName: {
     type: String,
-    required: [true, "Please enter your user id"],
+    required : true,
   },
-  productId: {
+  email: {
     type: String,
-    required: [true, "Please enter your user id"],
+    required : true,
   },
-  rating: {
-    type: Number,
+  productName: {
+    type: String,
     required: true,
   },
   comment: {
     type: String,
-    maxLength: [500, "Review cannot exceed 500 characters"],
+    required: true,
   },
   time: {
     type: Date,
