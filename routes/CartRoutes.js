@@ -9,7 +9,6 @@ http: router.post("/add", (req, res) => {
     productPrice,
     productImage,
     quantity,
-    userId,
   } = req.body;
 
   const newcart = new Cart({
@@ -17,7 +16,6 @@ http: router.post("/add", (req, res) => {
     productPrice,
     productImage,
     quantity,
-    userId,
   });
 
   newcart
@@ -40,7 +38,6 @@ http: router.route("/update/:id").put(async (req, res) => {
     productPrice,
     productImage,
     quantity,
-    userId,
     productId,
    
   } = req.body;
@@ -50,7 +47,6 @@ http: router.route("/update/:id").put(async (req, res) => {
     productPrice,
     productImage,
     quantity,
-    userId,
     productId,
     
   };
