@@ -9,9 +9,6 @@ http: router.post("/add", (req, res) => {
     productPrice,
     productImage,
     quantity,
-    userId,
-    productId,
-    Stock,
   } = req.body;
 
   const newcart = new Cart({
@@ -19,9 +16,6 @@ http: router.post("/add", (req, res) => {
     productPrice,
     productImage,
     quantity,
-    userId,
-    productId,
-    Stock,
   });
 
   newcart
@@ -44,9 +38,8 @@ http: router.route("/update/:id").put(async (req, res) => {
     productPrice,
     productImage,
     quantity,
-    userId,
     productId,
-    Stock,
+   
   } = req.body;
 
   const updateCart = {
@@ -54,9 +47,8 @@ http: router.route("/update/:id").put(async (req, res) => {
     productPrice,
     productImage,
     quantity,
-    userId,
     productId,
-    Stock,
+    
   };
 
   await Cart.findByIdAndUpdate(ID, updateCart)
