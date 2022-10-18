@@ -83,13 +83,31 @@ http: router.route("/delete/:id").delete(async (req, res) => {
 });
 
 //localhost:8070/cart/ ---> get all items
-htttp: router.route("/").get((req, res) => {
+http: router.route("/").get((req, res) => {
   Cart.find()
     .then((cart) => {
       res.json(cart);
     })
     .catch((err) => {
       console.log(err);
+    });
+});
+
+//-----get reviews from one product-----
+
+http: router.route("/get/:id").get(async (req, res) => {
+  
+  let ID = req.params.id;
+
+  await Cart.findById(ID)
+    .then((cart) => {
+      res.status(200).send({ status: "User fetched", cart });
+    })
+    .catch(() => {
+      console.log(err.message);
+      res
+        .status(500)
+        .send({ status: "Error with get user", error: err.message });
     });
 });
 
