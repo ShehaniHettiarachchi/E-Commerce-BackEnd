@@ -84,7 +84,7 @@ router.route("/delete/:id").delete(async (req, res) => {
 router.route("/get/:id").get(async (req, res) => {
     let orderId = req.params.id;
     await Order.findById(orderId).then(() => {
-        res.status(200).send({ status: "Order fethced",order: Order });
+        res.status(200).send({ status: "Order fethced",Order : Order });
     }).catch(() => {
         console.log(err.message);
         res.status(500).send({ status: "Error with fetching order", error: err.message });

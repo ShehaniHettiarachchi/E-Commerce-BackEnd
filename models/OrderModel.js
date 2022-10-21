@@ -7,19 +7,17 @@ const orderSchema = new Schema({
         type: String,
         required: true,
     },
-    shippingInfo: {
-        address: {
-            type: String,
-            required: true,
-        },
-        city: {
-            type: String,
-            required: true,
-        },
-        phoneNo: {
-            type: String,
-            required: true,
-        },
+    address: {
+        type: String,
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true,
+    },
+    phoneNo: {
+        type: String,
+        required: true,
     },
     orderItems: [
         {
@@ -45,7 +43,7 @@ const orderSchema = new Schema({
             },
         },
     ],
-    
+
     totalPrice: {
         type: Number,
         required: true,
