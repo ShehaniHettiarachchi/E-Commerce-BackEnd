@@ -4,11 +4,14 @@ const bodyParser = require("body-parser"); //Parses the request body to be a rea
 const cors = require("cors"); //Cross origin resource sharing
 const dotenv = require("dotenv"); //Loads environment variables from a .env file into process.env
 const app = express(); //Initialize the Express application
+const path = require("path")
 require("dotenv").config(); //Loads environment variables from a .env file into process.env
 
 const PORT = process.env.PORT || 8070;
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));//*
+app.use(bodyParser.urlencoded({ extended: false }));//*
 app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL; // mongoDB URL
