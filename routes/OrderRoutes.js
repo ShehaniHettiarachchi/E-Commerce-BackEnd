@@ -4,26 +4,27 @@ const { Order } = require("../models/OrderModel");
 
 //Localhost:8070/order/newOrder
 router.route("/newOrder").post((req, res) => {
+  const {
+    shippingInfo,
+    orderItems,
+    customerID,
+    customerEmail,
+    totalPrice,
+    orderStatus,
+    deliveredAt,
+    createdAt,
+  } = req.body;
 
-    const {
-        shippingInfo,
-        orderItems,
-        customer,
-        totalPrice,
-        orderStatus,
-        deliveredAt,
-        createdAt,
-    } = req.body;
-
-    const newOrder = new Order({
-        shippingInfo,
-        orderItems,
-        customer,
-        totalPrice,
-        orderStatus,
-        deliveredAt,
-        createdAt,
-    });
+  const newOrder = new Order({
+    shippingInfo,
+    orderItems,
+    customerID,
+    customerEmail,
+    totalPrice,
+    orderStatus,
+    deliveredAt,
+    createdAt,
+  });
 
     newOrder.save().then(() => {
         res.json("Order Added Successfully")

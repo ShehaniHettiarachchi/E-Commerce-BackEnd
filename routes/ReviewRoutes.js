@@ -4,14 +4,13 @@ const { Review } = require("../models/ReviewModel");
 
 //localhost:8070/review/add   -----> insert
 http: router.post("/add", (req, res) => {
-  const { userId, productId, rating, comment, time } = req.body;
+  const { UserName, productName, comment,email} = req.body;
 
   const newreview = new Review({
-    userId,
-    productId,
-    rating,
+    UserName,
+    email,
+    productName,
     comment,
-    time,
   });
 
   newreview
@@ -28,14 +27,13 @@ http: router.post("/add", (req, res) => {
 http: router.route("/update/:id").put(async (req, res) => {
   let ID = req.params.id;
 
-  const { userId, productId, rating, comment, time } = req.body;
+  const { UserName, productName, comment,email} = req.body;
 
   const updateReview = {
-    userId,
-    productId,
-    rating,
+    UserName,
+    email,
+    productName,
     comment,
-    time,
   };
 
   await Review.findByIdAndUpdate(ID, updateReview)

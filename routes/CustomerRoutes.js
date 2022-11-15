@@ -5,8 +5,9 @@ const { Customer } = require("../models/CustomerModel");
 const { CustomerToken } = require("../models/CustomerToken");
 const { CustomerAUth } = require("../middlewares/CustomerAuth");
 const jwt = require("jsonwebtoken");
+const { get } = require("mongoose");
 
-//Localhost:8070/customer/register  ---> registration
+//Localhost:8070/customer/register  
 
 http: router.post("/register", (req, res) => {
   Customer.find({ email: req.body.email })
@@ -48,7 +49,7 @@ http: router.post("/register", (req, res) => {
     });
 });
 
-//Localhost:8070/customer/login -----> customer login
+//Localhost:8070/customer/login 
 
 http: router.post("/login", (req, res) => {
   Customer.findOne({ email: req.body.email })
@@ -119,7 +120,7 @@ http: router.post("/login", (req, res) => {
     });
 });
 
-//Localhost:8070/customer/logout ----> customer logout
+//Localhost:8070/customer/logout 
 
 http: router.get("/logout", CustomerAUth, (req, res) => {
   CustomerToken.findOneAndDelete(
@@ -139,12 +140,11 @@ http: router.get("/logout", CustomerAUth, (req, res) => {
   );
 });
 
-//localhost:8070/customer/  -----> retrieve
-
+//http:localhost:8070/customer/  
 http: router.route("/").get((req, res) => {
   Customer.find()
-    .then((customer) => {
-      res.json(customer);
+    .then((Customer) => {
+      res.json(Customer);
     })
     .catch((err) => {
       console.log(err);
@@ -169,7 +169,7 @@ http: router.route("/delete/:id").delete(async (req, res) => {
     });
 });
 
-//localhost:8070/customer/update/  ------> update user role
+//localhost:8070/customer/update/:id  ------> update user role
 
 http: router.route("/update/:id").put(async (req, res) => {
   let userID = req.params.id;
@@ -194,20 +194,18 @@ http: router.route("/update/:id").put(async (req, res) => {
     });
 });
 
-//localhost:8070/customer/get/  -----> profile
+//localhost:8070/customer/get/:id  -----> profile
 
-router.route("/get/:id").get(async (req, res) => {
+http: router.route("/get/:id").get(async(req,res)=> {
   let userID = req.params.id;
-  const user = await Customer.findById(userID)
-    .then((customer) => {
-      res.status(200).send({ status: "User fetched", customer });
-    })
-    .catch(() => {
-      console.log(err.message);
-      res
-        .status(500)
-        .send({ status: "Error with get user", error: err.message });
-    });
+  await Customer.findById(userID)
+  .then((Customer)=> {
+    res.status(200).send({status : "User Fetch", Customer});
+  })
+  .catch((err)=> {
+    console.log(err);
+    res.status(500).send({status : "Error with get user", error: err.message});
+  });
 });
 
 module.exports = router;

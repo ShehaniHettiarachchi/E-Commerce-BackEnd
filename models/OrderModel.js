@@ -2,23 +2,22 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
-
-    customer: {
-        type: String,
-        required: true,
-    },
+  shippingInfo: {
     address: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     city: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
+    
     phoneNo: {
         type: String,
         required: true,
     },
+  },
+  
     orderItems: [
         {
             name: {
@@ -44,24 +43,34 @@ const orderSchema = new Schema({
         },
     ],
 
-    totalPrice: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
-    orderStatus: {
-        type: String,
-        required: true,
-        default: "Processing",
-    },
-    deliveredAt: {
-        type: Date,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
 
+  customerID: {
+    type: String,
+    required: true,
+  },
+
+  customerEmail: {
+    type: String,
+    required: true,
+  },
+
+  totalPrice: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  orderStatus: {
+    type: String,
+    required: true,
+    default: "Processing",
+  },
+  deliveredAt: {
+    type: Date,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Order = mongoose.model("Order", orderSchema);
